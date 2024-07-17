@@ -53,11 +53,11 @@ const Manager = () => {
     ) {
       const existingId = form.id || uuidv4();
       // If any such id exists in the db, delete it 
-     await fetch("http://localhost:3000/", { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: existingId}) })
+     await fetch("https://localhost:3000/", { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: existingId}) })
 
      
       setpasswordArray([...passwordArray, { ...form, id: uuidv4() }])
-      await fetch("http://localhost:3000/", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...form, id: uuidv4() }) })
+      await fetch("https://localhost:3000/", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...form, id: uuidv4() }) })
       // localStorage.setItem(
       // "password",
       //JSON.stringify([...passwordArray, { ...form, id: uuidv4() }])
@@ -96,7 +96,7 @@ const Manager = () => {
     let c = confirm("do you really want to delete?");
     if (c) {
       setpasswordArray(passwordArray.filter((item) => item.id !== id));
-      let res = await fetch("http://localhost:3000/", {
+      let res = await fetch("https://localhost:3000/", {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
